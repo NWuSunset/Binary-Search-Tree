@@ -33,7 +33,7 @@ void BinaryTree::remove() {
 }
 
 //used in the remove function for recursion
-void BinaryTree::sortNodes() {
+void BinaryTree::sortNodes(Node* n1, Node* n2) {
 
 }
 
@@ -57,8 +57,21 @@ void BinaryTree::print(const Node* pos , const int depth) {
     print(pos->left, depth + 1); //print out left of tree
 }
 
-bool hasNode(int data) {
-    return false;
+bool search(Node* node, int data) {
+    //Base case: if node is null (end of tree)
+    if (node == nullptr) {
+        return false;
+    }
+    //Base case: if we find the data
+    if (node->data == data) {
+        return true;
+    }
+    //If data is less go left.
+    if (data < node->data) {
+        search(node->left, data);
+    } else {
+        search(node->right, data);
+    }
 }
 
 

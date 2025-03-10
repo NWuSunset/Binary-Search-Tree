@@ -18,9 +18,9 @@ class BinaryTree {
   BinaryTree(); 
   void insert(Node* &node, int data); //insert into binary tree
   void remove(); //remove from binary tree
-  void sortNodes();
+  void sortNodes(Node* n1, Node* n2);
   void print(const Node* pos , int depth); //Prints out the binary tree
-  bool hasNode(int data); //checks if the tree has a specific node
+  bool search(int data); //checks if the tree has a specific node
 
   ~BinaryTree();
 private:

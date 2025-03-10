@@ -18,12 +18,12 @@ int main() {
     cout << arr[i] << endl;
   } */
 
-  
+  cout << "Hello World" << endl;  
   return 0;
 }
 
 
-void fromFile(Heap* heap) {
+void fromFile() {
   string file;
   cout << "Enter the name of the file you want to read from" << endl;
   getline(cin, file);
@@ -35,7 +35,7 @@ void fromFile(Heap* heap) {
     cout << "Inserting numbers into the heap..." << endl;
     cout << "Adding numbers from file" << endl;
     while (numFile >> num) {
-      heap->insertNode(num, heap->heapSize);
+     // heap->insertNode(num, heap->heapSize);
     }
     numFile.close();
   } else {
@@ -44,7 +44,7 @@ void fromFile(Heap* heap) {
 }
 
 
-void fromConsole(Heap* heap) {
+void fromConsole() {
   string input;
   cout << "Enter numbers separated by spaces: " << endl;
   getline(cin, input);
@@ -56,6 +56,6 @@ void fromConsole(Heap* heap) {
   cout << "Inserting numbers into the heap..." << endl;
   //Stream a number till while space is encountered. Do this until end of string is hit
   while (iss >> num) {
-    heap->insertNode(num, heap->heapSize); //add num to heap
+  //  heap->insertNode(num, heap->heapSize); //add num to heap
   }
 }
