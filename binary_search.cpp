@@ -23,12 +23,25 @@ void BinaryTree::insert(Node* &node, const int data) {
     }
 }
 
-void BinaryTree::remove() {
+void BinaryTree::remove(Node* rem) {
     /*Cases to check for:
-        children are null
+        children are null (no childreN)
         only one child
         with two children (complicated case)
         */
+
+  if (rem->left == nullptr && rem->right == nullptr) {
+    //we can just delete the thing
+  }
+  
+  if (rem->left == nullptr) {
+    sortNodes(rem, rem->right); //sort using right node
+  } else if (rem->right == nullptr) {
+    sortNode(rem, rem->left);
+  } else { //if two children or no children
+    
+    
+  }
 
 }
 
@@ -57,7 +70,7 @@ void BinaryTree::print(const Node* pos , const int depth) {
     print(pos->left, depth + 1); //print out left of tree
 }
 
-bool search(Node* node, int data) {
+bool BinaryTree::hasNode(Node* node, int data) {
     //Base case: if node is null (end of tree)
     if (node == nullptr) {
         return false;
@@ -68,10 +81,11 @@ bool search(Node* node, int data) {
     }
     //If data is less go left.
     if (data < node->data) {
-        search(node->left, data);
+        hasNode(node->left, data);
     } else {
-        search(node->right, data);
+        hasNode(node->right, data);
     }
+    return false;
 }
 
 

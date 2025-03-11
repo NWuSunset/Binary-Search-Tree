@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
+#include "binary_search.h"
 
 using namespace std;
 
@@ -18,33 +18,41 @@ int main() {
     cout << arr[i] << endl;
   } */
 
+  BinaryTree * bst = new BinaryTree();
+
+  bst->insert(bst->root, 5);
+  bst->print(bst->root);
+  bool test = bst->hasNode(bst->root, 5);
+  cout << test << endl; 
+  
   cout << "Hello World" << endl;  
   return 0;
 }
 
 
-void fromFile() {
-  string file;
-  cout << "Enter the name of the file you want to read from" << endl;
-  getline(cin, file);
+//taking numbers from a file separated by spaces
+void fromFile(BinaryTree* bst) {
+  string filePath;
+  cout << "Enter the path of the file you want to read from. Or type the filename if it's in the local directory" << endl;
+  getline(cin, filePath);
 
-  ifstream numFile(file);
+  ifstream inputFile(filePath);
 
-  if (numFile.is_open()) {
+  if (inputFile.is_open()) {
     int num;
-    cout << "Inserting numbers into the heap..." << endl;
+    cout << "Inserting numbers into the tree..." << endl;
     cout << "Adding numbers from file" << endl;
-    while (numFile >> num) {
-     // heap->insertNode(num, heap->heapSize);
+    while (inputFile >> num) {
+      bst->insert(bst->root, num);
     }
-    numFile.close();
+    inputFile.close();
   } else {
     cout << "Cannot find file specified" << endl;
   }
 }
 
 
-void fromConsole() {
+void fromConsole(BinaryTree * bst) {
   string input;
   cout << "Enter numbers separated by spaces: " << endl;
   getline(cin, input);
@@ -56,6 +64,6 @@ void fromConsole() {
   cout << "Inserting numbers into the heap..." << endl;
   //Stream a number till while space is encountered. Do this until end of string is hit
   while (iss >> num) {
-  //  heap->insertNode(num, heap->heapSize); //add num to heap
+    bst->insert(bst->root, num);
   }
 }
