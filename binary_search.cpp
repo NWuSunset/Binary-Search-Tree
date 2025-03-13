@@ -4,50 +4,67 @@
 BinaryTree::BinaryTree() = default;
 
 //insert into binary tree
-void BinaryTree::insert(Node* &node, const int data) {
+void BinaryTree::insert(Node* &node, Node* prev, const int data) {
     if (node == nullptr) {
         node = new Node(data); //this will be the base case of the recursion (will insert once the path has ended)
-        return;
+	node->parent = prev;
+	return;
     }
-
+    
     //if number is already in the tree
     if (node->data == data) {
-        return;
+      std::cout << "Already in the tree" << std::endl;
+      return;
     }
-
+    
     //if greater than node then go right
     if (node->data < data) {
-        insert(node->right, data); //now go down the right branch
+      insert(node->right, node,  data); //now go down the right branch
     } else if (node->data > data) {
-        insert(node->left, data); //go down left path is passed in is less than node
+      insert(node->left, prev, data); //go down left path is passed in is less than node
     }
 }
 
 void BinaryTree::remove(Node* rem) {
-    /*Cases to check for:
-        children are null (no childreN)
-        only one child
-        with two children (complicated case)
-        */
-
-  if (rem->left == nullptr && rem->right == nullptr) {
-    //we can just delete the thing
-  }
-  
+  //If left is null swap with right. (if there are no children it will just become a nullptr)
   if (rem->left == nullptr) {
-    sortNodes(rem, rem->right); //sort using right node
-  } else if (rem->right == nullptr) {
-    sortNode(rem, rem->left);
-  } else { //if two children or no children
-    
-    
-  }
+    swapNodes(rem, rem->right); //sort using right node
+  } else if (rem->right == nullptr) { //if only has left child
+    swapNodes(rem, rem->left);
+  } else { //if two children 
+    //Go to rem's successor, then go left all the way of the sucessor. Then swap the end of the left tree with rem, and delete the end node
+    Node* s = rem->right; //successor
 
+    //Go down through the left path
+    while (s->left != nullptr) {
+      s = s->left;
+    }
+    //one last left is hit
+    //swap their numbers
+    rem->data = s->data;
+    remove(s); //basically calling remove again to call sortNodes(s, s->right).
+  }
 }
 
-//used in the remove function for recursion
-void BinaryTree::sortNodes(Node* n1, Node* n2) {
+//used in the remove function for recursion. n1 is the node to be deleted, n2 is the node to be swapped
+void BinaryTree::swapNodes(Node* n1, Node* n2) {
 
+  //n1 is the root
+  if (n1 == root) {
+    root = n2; //root is now n2 
+  }
+
+  
+  //Check if n1 is left of it's parent (then sawp n2 with that)
+  if (n1 == n1->parent->left) {
+    n1->parent->left = n2; //swap with n2
+  } else {
+    n1->parent->right = n2; //if it's right: swap with parent right
+  }
+
+  //If n2 != nullptr
+  // n2's parent = n1's parent
+  //Swapping n1 with it's parent
 }
 
 //Visualize the binary tree

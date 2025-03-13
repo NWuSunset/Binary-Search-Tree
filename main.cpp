@@ -20,7 +20,8 @@ int main() {
 
   BinaryTree * bst = new BinaryTree();
 
-  bst->insert(bst->root, 5);
+  
+  bst->insert(bst->root, nullptr, 5);
   bst->print(bst->root);
   bool test = bst->hasNode(bst->root, 5);
   cout << test << endl; 
@@ -43,7 +44,7 @@ void fromFile(BinaryTree* bst) {
     cout << "Inserting numbers into the tree..." << endl;
     cout << "Adding numbers from file" << endl;
     while (inputFile >> num) {
-      bst->insert(bst->root, num);
+      bst->insert(bst->root, nullptr, num);
     }
     inputFile.close();
   } else {
@@ -64,6 +65,6 @@ void fromConsole(BinaryTree * bst) {
   cout << "Inserting numbers into the heap..." << endl;
   //Stream a number till while space is encountered. Do this until end of string is hit
   while (iss >> num) {
-    bst->insert(bst->root, num);
+    bst->insert(bst->root, nullptr, num);
   }
 }
