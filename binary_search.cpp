@@ -87,22 +87,25 @@ void BinaryTree::print(const Node* pos , const int depth) {
     print(pos->left, depth + 1); //print out left of tree
 }
 
-bool BinaryTree::hasNode(Node* node, int data) {
+Node* BinaryTree::getNode(Node* node, int data) {
     //Base case: if node is null (end of tree)
     if (node == nullptr) {
-        return false;
+      //return false;
+      return nullptr;
     }
     //Base case: if we find the data
     if (node->data == data) {
-        return true;
+      //return true;
+      return node;
     }
     //If data is less go left.
     if (data < node->data) {
-        hasNode(node->left, data);
+        getNode(node->left, data);
     } else {
-        hasNode(node->right, data);
+        getNode(node->right, data);
     }
-    return false;
+    //return false;
+    return nullptr;
 }
 
 
