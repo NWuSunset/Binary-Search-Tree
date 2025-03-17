@@ -37,7 +37,7 @@ int main() {
 
 bool userSelection(BinaryTree* bst) {
   char userInput[12];
-  cout << "Type CONSOLE to enter a series of numbers in the console. Or type FILE to enter a file name. Type PRINT to print out the tree. Type 'remove' to remove a number from the tree" << endl;
+  cout << "Type CONSOLE to enter a series of numbers in the console. Or type FILE to enter a file name. Type PRINT to print out the tree. Type 'remove' to remove a number from the tree. Type SEARCH to search for a number in the tree." << endl;
   cin.getline(userInput, 12);
   
   //in case more than 12 characters are entered (so it won't break the program)
@@ -65,6 +65,16 @@ bool userSelection(BinaryTree* bst) {
       bst->remove(n);
     } else {
     cout << "Invalid number" << endl;
+    }
+    cin.ignore();
+  } else if (strcasecmp(userInput, "SEARCH") == 0) {
+    int num;
+    cout << "What number do you want to search for in the tree?" << endl;
+    cin >> num;
+    if (bst->getNode(bst->root, num) != nullptr) {
+      cout << "It is in the tree" << endl;
+    } else {
+      cout << "This number isn't in the tree" << endl;
     }
     cin.ignore();
   } else if (strcasecmp(userInput, "QUIT") == 0) {

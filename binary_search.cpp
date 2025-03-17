@@ -74,7 +74,8 @@ void BinaryTree::print(const Node* pos , const int depth, bool isRight) {
   if (pos == nullptr) {
     return; //base case
   }
-  
+
+
   //Take the right first
   print(pos->right, depth + 1, true);
   
@@ -82,15 +83,16 @@ void BinaryTree::print(const Node* pos , const int depth, bool isRight) {
   for (int i = 0; i < depth; i++) {
     std::cout << "    ";
   }
+ 
   
   //Print a Γ for a right node and L for a left node (helps show the connections of the tree better)
   if (depth > 0 ) {
     std::cout << (isRight ? "Γ" : "L") << " ";
   }
   std::cout << pos->data << std::endl; //then print out data
-  
-  
+
   print(pos->left, depth + 1, false); //print out left of tree
+
 }
 
 //Finds a node in the binary tree that correspondsd to data
