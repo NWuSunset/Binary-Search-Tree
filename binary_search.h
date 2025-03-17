@@ -33,7 +33,7 @@ class BinaryTree {
   /* remove args: rem - node to remove from the tree */
   void remove(Node* rem); //remove from binary tree
   void swapNodes(Node* n1, Node* n2);
-  void print(const Node* pos, const int depth = 0); //Prints out the binary tree (depth starts at 0)
+  void print(const Node* pos, const int depth = 0, bool isRight = false); //Prints out the binary tree (depth starts at 0)
   Node* getNode(Node* node, int data); //checks if the tree has a specific node
   
   ~BinaryTree();
