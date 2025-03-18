@@ -50,12 +50,15 @@ class BinaryTree {
     */
   void swapNodes(Node* n1, Node* n2);
 
+
+
   /*!
       @brief  Used to visualize the tree to the console
       @param  pos       Position in the tree. Should be root to start
       @param  depth     Depth of the tree. Should be 0 to start
+      @param isRight    Checking if it's a right or left child, prints "Γ" or "L" depending on which
     */
-  void print(const Node* pos, int depth = 0); //Prints out the binary tree (depth starts at 0)
+  void print(const Node* pos, int depth = 0, bool isRight = false); //Prints out the binary tree (depth starts at 0)
 
   /*!
         @brief  Used to visualize the tree to the console
@@ -64,7 +67,6 @@ class BinaryTree {
         @returns the Node* in the tree that contains the passed in data
         @returns nullptr if the data could not be found in the tree
       */
-  void print(const Node* pos, const int depth = 0, bool isRight = false); //Prints out the binary tree (depth starts at 0)
   Node* getNode(Node* node, int data); //checks if the tree has a specific node
 
   /*!

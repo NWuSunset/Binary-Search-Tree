@@ -121,7 +121,7 @@ void fromConsole(BinaryTree * bst) {
   //object to stream the string into different variables (since we input ints separated by spaces)
   int num;
 
-  cout << "Inserting numbers into the heap..." << endl;
+  cout << "Inserting numbers..." << endl;
   //Stream a number till while space is encountered. Do this until end of string is hit
   while (iss >> num) {
     bst->insert(bst->root, nullptr, num);
